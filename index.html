@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input module preview</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="picker.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+    <link rel="stylesheet" href="picker.css">
+    <style>
+      html,body{
+        position: relative;
+        padding-top: 1em;
+      }
+      #someElement{
+        height: 50px;
+        width: 50px;
+        margin: 10px auto;
+        border: 1px solid #707070;
+        border-radius: 3px;
+        background-color: #123456;
+      }
+      h3{
+        text-align: center;
+      }
+      #message{}
+      #span-color{
+        font-size: .8em;
+        text-transform: uppercase;
+        color: #707070;
+      }
+    </style>
+    
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <h3>
+          <span id="message">
+            Click on the square below.
+          </span>
+          <span id="span-color"></span>
+        </h3>
+        <div id="someElement"></div>
+      </div>
+    </div>
+  </div>
+ 
+  <script>
+    var picker = new Picker();
+    
+    $('#someElement').on('click',function(e){
+      picker.init($(this), callback);
+    });    
+    
+    function callback(color){
+      $('#message').text("Color ");
+      $('#span-color')
+        .text('#' + color)
+        .css('color', '#' + color);
+    };
+  </script>
+</body>
+</html>
